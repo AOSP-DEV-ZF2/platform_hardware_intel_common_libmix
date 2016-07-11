@@ -147,8 +147,8 @@ static int gfx_unlock(buffer_handle_t handle) {
     return err;
 }
 
-static int gfx_Blit(buffer_handle_t src, buffer_handle_t dest,
-                      int w, int h, int , int )
+static int gfx_Blit(buffer_handle_t, buffer_handle_t,
+                      int, int, int , int )
 {
     int err;
 
@@ -164,8 +164,6 @@ static int gfx_Blit(buffer_handle_t src, buffer_handle_t dest,
 #ifdef MRFLD_GFX
 #ifdef LP_BLOBS
     err = GrallocMod->Blit(GrallocMod, src, dest, w, h, 0, 0, 0, 0);
-#else
-    err = GrallocMod->Blit2(GrallocMod, src, dest, w, h, 0, 0);
 #endif
 
     if (err) {
