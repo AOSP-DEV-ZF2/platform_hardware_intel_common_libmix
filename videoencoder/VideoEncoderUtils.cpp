@@ -165,16 +165,6 @@ static int gfx_Blit(buffer_handle_t src, buffer_handle_t dest,
 #ifdef LP_BLOBS
     err = GrallocMod->Blit(GrallocMod, src, dest, w, h, 0, 0, 0, 0);
 #else
-    {
-        int fenceFd;
-        err = GrallocMod->Blit(GrallocMod, src, dest, w, h, 0, 0, 0, -1, &fenceFd);
-        if (!err) {
-            sync_wait(fenceFd, -1);
-            close(fenceFd);
-        }
-    }
-#endif
-#else
     err = GrallocMod->Blit2(GrallocMod, src, dest, w, h, 0, 0);
 #endif
 
@@ -813,3 +803,5 @@ VASurfaceID CreateNewVASurface(VADisplay display, int32_t width, int32_t height)
 
     return surface;
 }
+
+#endif
