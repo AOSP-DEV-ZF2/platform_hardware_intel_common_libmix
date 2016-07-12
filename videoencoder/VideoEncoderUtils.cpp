@@ -165,11 +165,6 @@ static int gfx_Blit(buffer_handle_t, buffer_handle_t,
 #ifdef LP_BLOBS
     err = GrallocMod->Blit(GrallocMod, src, dest, w, h, 0, 0, 0, 0);
 #endif
-
-    if (err) {
-        LOG_E("Blit(...) failed %d (%s)", err, strerror(-err));
-        return -1;
-    } else
         LOG_V("Blit returned\n");
 
     return err;
